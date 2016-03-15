@@ -7,3 +7,69 @@
 //需引入  //netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css
   <span class="icons fa fa-weibo" ></span>
 ```
+###使用[webpack](http://webpack.github.io/docs/tutorials/getting-started/)作为模块化开发的方案
+####webpack的具体使用方法可见[react-webpack-cookbook](https://fakefish.github.io/react-webpack-cookbook/index.html)
+####这个模块化的方案 会用到部分ES6语法特性 具体可参照 [ECMAScript 6入门](http://es6.ruanyifeng.com/#README)
+#####模块书写实例如下:
+```js
+//login.js
+var initModel,
+    handleLogin,
+    config;
+config={
+    form:'LoginForm'
+};
+handleLogin=function(){
+    var form;
+    form=$('#'+config.form);
+    form.bind('submit',function(e){
+        $.afui.showMask('正在登陆');
+        //alert('form submit');
+        e.preventDefault();
+        var obj={
+            loginName:form.find('#loginName').val(),
+            pwd:form.find('#password').val()
+        };
+        console.log(obj);
+        var url=sysConfig.getApiHost()+'account/login';
+        // alert(url);
+        //$.afui.loadContent('#main',false,false,'up');
+        $.ajax({
+            url:url,
+            type:'post',
+            data:JSON.stringify(obj),
+            contentType:'text/plain',
+            success:function(res){
+                //alert('login success');
+                $.afui.hideMask();
+                $.afui.loadContent('#main',false,false,'up');
+            },
+            error:function(res){
+                alert('login error :'+JSON.stringify(res));
+            }
+        });
+    });
+
+};
+initModel=function(){
+    handleLogin();
+};
+//可暴露多个模块方法
+module.exports={initModel,handleLogin};
+```
+```js
+//app.js
+//ES6 引用模块写法:
+//import {initModel} from './js/page/login/login.js';
+//commonJS 引用模块语法:
+const Login =require('./js/page/login/login.js');
+jQuery(document).ready(function(){
+    "use strict";
+    Login.initModel();
+});
+
+```
+####webpack 会根据配置文件[webpack.config.js](https://github.com/xiaoqi1102/myApp/blob/compenent-by-webpack/webpack.config.js)
+中配置的打包文件名和文件路径 打包生成指定的 文件 当前是[bundle.js](https://github.com/xiaoqi1102/myApp/blob/compenent-by-webpack/www/build/bundle.js) 
+将该文件引入项目中即可
+
