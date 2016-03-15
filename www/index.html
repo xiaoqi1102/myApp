@@ -1,34 +1,93 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <title>南大菲特</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="lib/css/icons.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="lib/css/af.ui.css" />
+    <link rel="stylesheet" href="lib/css/spa.css"/>
+    <script src="lib/js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/js/appframework.ui.js"></script>
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
+    <script>
+      $.afui.useOSThemes=false;
+    </script>
   </head>
-  <body ng-app="starter">
+  <body >
+  <div class="view active" id="loginView">
+    <header>
+      <h1>登录</h1>
+    </header>
+    <div class="pages">
+      <div class="panel" id="login" data-selected="true">
+        <form  id="LoginForm" style="margin-top: 10px;">
+          <div class="input-group">
+            <input type="text" id="loginName" placeholder="手机号码"/>
+            <input type="text" id="password" placeholder="密码"/>
+          </div>
+          <button class="button block pressed blue">登录</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="view" id="mainView">
+    <header>
+      <h1>南大菲特</h1>
+      <span class="icon home big" style="float:right;line-height: 44px;height: 100%;padding-right: 10px;"></span>
+    </header>
+    <div class="pages">
+      <div class="panel" id="main">
+        <ul class="list">
+          <li>营养师李彩霞发过来的消息</li>
+        </ul>
+      </div>
+      <div class="panel" id="busy">
+        <ul class="list insert">
+          <li>单文章栏目</li>
+          <li>多文章栏目</li>
+        </ul>
+      </div>
 
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
-      </ion-content>
-    </ion-pane>
+      <div class="panel" id="shop">
+        <h2>这里是商城</h2>
+      </div>
+
+      <div class="panel" id="weibo">
+        <h2>这里是微博</h2>
+      </div>
+    </div>
+    <footer>
+      <a href="#main" class="icon home"  >消息</a>
+      <a href="#busy" class="icon busy">资讯</a>
+      <a href="#shop" >
+        <span class="icons fa fa-apple " ></span>
+        商城
+      </a>
+      <a href="#weibo">
+        <span class="icons fa fa-weibo" ></span>
+        微博
+      </a>
+    </footer>
+  </div>
+  <script src="lib/js/common/storeandjson2.min.js"></script>
+  <script src="lib/js/common/dataStore.js"></script>
+  <script src="lib/js/common/sysConfig.js"></script>
+  <!--登录模块-->
+  <script src="lib/js/account/login.js"></script>
+  <!--main.js 是所有业务js代码的入口-->
+  <script src="lib/js/common/main.js"></script>
   </body>
 </html>
