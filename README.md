@@ -69,4 +69,7 @@ jQuery(document).ready(function(){
 });
 
 ```
+####webpack 会根据配置文件[webpack.config.js](https://github.com/xiaoqi1102/myApp/blob/compenent-by-webpack/webpack.config.js)
+中配置的打包文件名和文件路径 打包生成指定的 文件 当前是[bundle.js](https://github.com/xiaoqi1102/myApp/blob/compenent-by-webpack/www/build/bundle.js) 
+将该文件引入项目中即可
 
