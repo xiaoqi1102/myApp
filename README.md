@@ -57,7 +57,6 @@ initModel=function(){
 //可暴露多个模块方法
 module.exports={initModel,handleLogin};
 ```
-
 ```js
 //app.js
 //ES6 引用模块写法:
