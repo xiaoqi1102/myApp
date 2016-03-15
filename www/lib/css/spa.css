@@ -5,3 +5,6 @@ button.button.block{
   display: block;
   font-size: 30px;;
 }
+.header-icon-right{
+  float:right;line-height: 44px;height: 100%;padding-right: 10px;
+}
